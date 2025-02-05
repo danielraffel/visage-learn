@@ -6,6 +6,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 project(visage-learn VERSION 0.0.1 LANGUAGES C CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+
 add_subdirectory(libs/Visage)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
