@@ -8,7 +8,12 @@ project(visage-learn VERSION 0.0.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
+
+include(cmake/CmakeRC.cmake)
+file(GLOB_RECURSE PATCHES  "fonts/*.ttf")
+cmrc_add_resource_library(${PROJECT_NAME}-fonts NAMESPACE resource_fonts ${PATCHES})
+
 add_subdirectory(libs/Visage)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE visage)
+add_executable(${PROJECT_NAME} src/main.cpp src/fonts.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE visage ${PROJECT_NAME}-fonts)
