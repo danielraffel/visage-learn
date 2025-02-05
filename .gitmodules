@@ -1,0 +1,3 @@
+[submodule "libs/Visage"]
+	path = libs/Visage
+	url = https://github.com/VitalAudio/Visage
