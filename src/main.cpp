@@ -1,6 +1,7 @@
 #include <visage/app.h>
 #include <iostream>
 #include "draggable-circle.h"
+#include "sststyle-knob.h"
 #include "fonts.h"
 #include "config.h"
 
@@ -10,9 +11,18 @@ int realMain()
     baconpaul::visage_learn::Fonts::setup();
 
     visage::ApplicationWindow app;
-    baconpaul::visage_learn::DraggableCircle circle;
-    app.addChild(&circle);
-    circle.layout().setDimensions(800, 600);
+#define KNOB_CHILD
+#ifdef CIRCLE_CHILD
+    baconpaul::visage_learn::DraggableCircle child;
+    app.addChild(&child);
+    child.layout().setDimensions(800, 600);
+#endif
+
+#ifdef KNOB_CHILD
+    baconpaul::visage_learn::SSTStyleKnob child;
+    app.addChild(&child);
+    child.layout().setDimensions(600, 600);
+#endif
 
     app.setTitle("BaconPaul learns Visage");
     app.show(800, 600);

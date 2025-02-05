@@ -40,6 +40,7 @@ struct DraggableCircle : visage::Frame
         canvas.text("Fun", circleFont, visage::Font::Justification::kCenter, x, y,
                     2 * circle_radius, 2 * circle_radius);
     }
+
     void mouseDrag(const visage::MouseEvent &event) override
     {
         cx = 1.0 * event.position.x / width();
