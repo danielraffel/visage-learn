@@ -8,4 +8,5 @@ project(visage-learn VERSION 0.0.1 LANGUAGES C CXX)
 
 add_subdirectory(libs/Visage)
 
-add_executable(visage-learn src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE visage)
