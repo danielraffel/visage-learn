@@ -1,6 +1,8 @@
-//
-// Created by Paul Walker on 2/5/25.
-//
+/*
+ * BaconPaul learns Visage
+ *
+ * MIT License, 2025, https://github.com/baconpaul/visage-learn
+ */
 
 #include "fonts.h"
 

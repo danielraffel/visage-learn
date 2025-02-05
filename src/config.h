@@ -1,11 +1,15 @@
-//
-// Created by Paul Walker on 2/5/25.
-//
+/*
+ * BaconPaul learns Visage
+ *
+ * MIT License, 2025, https://github.com/baconpaul/visage-learn
+ */
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef BACONPAUL_VISAGE_LEARN_CONFIG_H
+#define BACONPAUL_VISAGE_LEARN_CONFIG_H
 
 #include <iostream>
 #define VLLOG(...) std::cout << __FILE__ << ":" << __LINE__ << " " << __VA_ARGS__ << std::endl;
 #define VLV(x) #x << "=" << x << " "
-#endif //CONFIG_H
+
+#include "pixel_math.h"
+#endif // CONFIG_H

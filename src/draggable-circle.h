@@ -1,9 +1,11 @@
-//
-// Created by Paul Walker on 2/5/25.
-//
+/*
+ * BaconPaul learns Visage
+ *
+ * MIT License, 2025, https://github.com/baconpaul/visage-learn
+ */
 
-#ifndef DRAGGABLE_CIRCLE_H
-#define DRAGGABLE_CIRCLE_H
+#ifndef BACONPAUL_VISAGE_LEARN_DRAGGABLE_CIRCLE_H
+#define BACONPAUL_VISAGE_LEARN_DRAGGABLE_CIRCLE_H
 
 #include <visage_ui/frame.h>
 #include "config.h"

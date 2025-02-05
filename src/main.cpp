@@ -1,3 +1,8 @@
+/*
+ * BaconPaul learns Visage
+ *
+ * MIT License, 2025, https://github.com/baconpaul/visage-learn
+ */
 #include <visage/app.h>
 #include <iostream>
 #include "draggable-circle.h"
@@ -19,10 +24,9 @@ int realMain()
 #endif
 
 #ifdef KNOB_CHILD
-    baconpaul::visage_learn::SSTFourKnobs child;
+    baconpaul::visage_learn::SSTNKnobs child;
     app.addChild(&child);
     child.setBounds({0, 0, 800, 600});
-    child.setup();
 #endif
 
     app.setTitle("BaconPaul learns Visage");
