@@ -14,9 +14,7 @@ int realMain()
     app.addChild(&circle);
     circle.layout().setDimensions(800, 600);
 
-    app.onDraw() = [&circle](visage::Canvas &canvas) { circle.draw(canvas); };
-
-    app.setTitle("Visage Basic Example");
+    app.setTitle("BaconPaul learns Visage");
     app.show(800, 600);
     app.runEventLoop();
 
