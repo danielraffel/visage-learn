@@ -19,9 +19,10 @@ int realMain()
 #endif
 
 #ifdef KNOB_CHILD
-    baconpaul::visage_learn::SSTStyleKnob child;
+    baconpaul::visage_learn::SSTFourKnobs child;
     app.addChild(&child);
-    child.layout().setDimensions(600, 600);
+    child.setBounds({0, 0, 800, 600});
+    child.setup();
 #endif
 
     app.setTitle("BaconPaul learns Visage");
