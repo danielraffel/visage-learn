@@ -74,10 +74,12 @@ struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>, ProvidesAK
     std::pair<accesskit_node *, uint32_t> getAKNode() override
     {
 #if HAS_ACCESSKIT
+        VLLOG("Creating AK node for knob " << index << " " << d2l(bounds().x()) << " "
+                                           << d2l(bounds().y()));
         accesskit_node *node = accesskit_node_new(ACCESSKIT_ROLE_SLIDER);
-        accesskit_node_set_bounds(
-            node, {(double)bounds().x(), (double)bounds().y(), (double)width(), (double)height()});
-        ;
+        accesskit_node_set_bounds(node, {(double)(bounds().x()), (double)(bounds().y()),
+                                         (double)(width()), (double)(height())});
+
         accesskit_node_set_label(node, ("Knob " + std::to_string(index)).c_str());
         accesskit_node_add_action(node, ACCESSKIT_ACTION_FOCUS);
         accesskit_node_add_action(node, ACCESSKIT_ACTION_CLICK);

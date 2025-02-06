@@ -64,14 +64,14 @@ struct ak_window_state
     {
         frame->window()->acccessibleHitTest = [this](int x, int y)
         {
-            VLLOG("Hit test  at " << x << "," << y);
+            // VLLOG("Hit test  at " << x << "," << y);
             auto res = accesskit_macos_adapter_hit_test(adapter, x, y, activate_cb, this);
             return res;
         };
-        frame->window()->acccessibleFocusElement = []()
+        frame->window()->acccessibleFocusElement = [this]()
         {
-            VLLOG("Focus element");
-            return nullptr;
+            auto res = accesskit_macos_adapter_focus(adapter, activate_cb, this);
+            return res;
         };
     }
     void doAction(struct accesskit_action_request *request)
@@ -85,13 +85,19 @@ struct ak_window_state
         VLLOG("doActivation");
         auto kids = collectTree(*frame);
         VLLOG("Collected " << kids.size() << " children");
+        VLLOG("Creating frame with " << frame->width() << " " << frame->height())
         accesskit_node *node = accesskit_node_new(ACCESSKIT_ROLE_WINDOW);
+        accesskit_node_set_bounds(node, {(double)frame->bounds().x(), (double)frame->bounds().y(),
+                                         (double)frame->width(), (double)frame->height()});
 
         for (auto &[p, id] : kids)
+        {
+            VLLOG("Adding child " << id);
             accesskit_node_push_child(node, id);
+        }
 
         accesskit_tree_update *result =
-            accesskit_tree_update_with_capacity_and_focus(kids.size(), kids[0].second);
+            accesskit_tree_update_with_capacity_and_focus(kids.size() + 1, kids[0].second);
         static constexpr uint32_t WINDOW_ID = 3;
         accesskit_tree *tree = accesskit_tree_new(WINDOW_ID);
         accesskit_tree_set_app_name(tree, "Visage App");
