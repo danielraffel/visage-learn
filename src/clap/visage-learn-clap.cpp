@@ -149,6 +149,33 @@ struct VisageLearnClap : public plugHelper_t
 
     bool guiShow() noexcept override { return true; }
 
+  protected:
+    bool implementsState() const noexcept override { return true; }
+    bool stateSave(const clap_ostream *stream) noexcept override { return true; }
+    bool stateLoad(const clap_istream *stream) noexcept override { return true; }
+
+    bool implementsParams() const noexcept override { return true; }
+    uint32_t paramsCount() const noexcept override { return 0; }
+    bool paramsInfo(uint32_t paramIndex, clap_param_info *info) const noexcept override
+    {
+        return false;
+    }
+    bool paramsValue(clap_id paramId, double *value) noexcept override { return false; }
+    bool paramsValueToText(clap_id paramId, double value, char *display,
+                           uint32_t size) noexcept override
+    {
+        return false;
+    }
+    bool paramsTextToValue(clap_id paramId, const char *display, double *value) noexcept override
+    {
+        return false;
+    }
+    void paramsFlush(const clap_input_events *in, const clap_output_events *out) noexcept override
+    {
+    }
+    int32_t getParamIndexForParamId(clap_id paramId) const noexcept override { return 0; }
+    bool isValidParamId(clap_id paramId) const noexcept override { return false; }
+
   public:
     bool implementsAudioPorts() const noexcept override { return true; }
     uint32_t audioPortsCount(bool isInput) const noexcept override { return isInput ? 0 : 1; }
@@ -164,6 +191,23 @@ struct VisageLearnClap : public plugHelper_t
         info->flags = CLAP_AUDIO_PORT_IS_MAIN;
         info->channel_count = 2;
         info->port_type = CLAP_PORT_STEREO;
+        return true;
+    }
+
+  protected:
+    bool implementsNotePorts() const noexcept override { return true; }
+    uint32_t notePortsCount(bool isInput) const noexcept override { return isInput ? 1 : 0; }
+    bool notePortsInfo(uint32_t index, bool isInput,
+                       clap_note_port_info *info) const noexcept override
+    {
+        assert(isInput);
+        if (!isInput || index > 1)
+            return false;
+        info->id = 7755 + index;
+        strncpy(info->name, "Notes In", sizeof(info->name));
+        info->supported_dialects =
+            CLAP_NOTE_DIALECT_MIDI | CLAP_NOTE_DIALECT_MIDI_MPE | CLAP_NOTE_DIALECT_CLAP;
+        info->preferred_dialect = CLAP_NOTE_DIALECT_CLAP;
         return true;
     }
 };

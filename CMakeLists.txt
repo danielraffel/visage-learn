@@ -34,6 +34,7 @@ target_link_libraries(${PROJECT_NAME}-impl
         PRIVATE
         visage ${PROJECT_NAME}-fonts
         clap-helpers
+        clap-wrapper-extensions
 
         sst-plugininfra
         sst-plugininfra::filesystem
@@ -67,7 +68,7 @@ make_clapfirst_plugins(
 
         COPY_AFTER_BUILD ${COPY_AFTER_BUILD}
 
-        PLUGIN_FORMATS CLAP # VST3 AUV2
+        PLUGIN_FORMATS CLAP VST3 AUV2
 
         ASSET_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_assets
 
