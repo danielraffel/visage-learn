@@ -124,9 +124,6 @@ struct SSTNKnobs : visage::Frame, PixelMixin<SSTNKnobs>
     {
         if (dpiScale() != llos)
             resized();
-
-        canvas.setColor(0xff000000);
-        canvas.fill(0, 0, width(), height());
     }
 };
 } // namespace baconpaul::visage_learn

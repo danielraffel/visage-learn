@@ -142,8 +142,8 @@ struct VisageLearnClap : public plugHelper_t
         if (editor_ == nullptr)
             return false;
 
-        *width = baconpaul::visage_learn::VisageLearnEditor::width;
-        *height = baconpaul::visage_learn::VisageLearnEditor::height;
+        *width = baconpaul::visage_learn::VisageLearnEditor::edWidth;
+        *height = baconpaul::visage_learn::VisageLearnEditor::edHeight;
         return true;
     }
 

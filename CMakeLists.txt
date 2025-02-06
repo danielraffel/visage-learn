@@ -32,7 +32,7 @@ add_library(${PROJECT_NAME}-impl
         src/ui/fonts.cpp)
 target_link_libraries(${PROJECT_NAME}-impl
         PRIVATE
-        visage ${PROJECT_NAME}-fonts
+        visage ${PROJECT_NAME}-fonts VisageFileEmbedInclude
         clap-helpers
         clap-wrapper-extensions
 
