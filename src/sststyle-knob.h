@@ -10,13 +10,19 @@
 #include <visage_ui/frame.h>
 #include "config.h"
 #include "fonts.h"
+#include "accesskit_to_visage.h"
 
 namespace baconpaul::visage_learn
 {
-struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>
+struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>, ProvidesAK
 {
     visage::Font detailFont;
-    SSTStyleKnob() { detailFont = visage::Font(20, Fonts::firaCode, Fonts::firaCodeSize); }
+    int index{0};
+    SSTStyleKnob()
+    {
+        detailFont = visage::Font(20, Fonts::firaCode, Fonts::firaCodeSize);
+
+    }
     static constexpr float gapAngle{60.0 / 360.0 * M_PI};
     float value{0.2};
     static constexpr int margin{2}, ringThick{8}, bodyStart{margin + ringThick + 4},
@@ -68,6 +74,22 @@ struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>
         value = std::clamp(value, 0.0f, 1.0f);
         redraw();
     }
+
+    std::pair<accesskit_node *, uint32_t> getAKNode() override
+    {
+#if HAS_ACCESSKIT
+        accesskit_node *node = accesskit_node_new(ACCESSKIT_ROLE_SLIDER);
+        accesskit_node_set_bounds(node, {(double)bounds().x(), (double)bounds().y(), (double)width(), (double)height()});;
+        accesskit_node_set_label(node, ("Knob " + std::to_string(index)).c_str());
+        accesskit_node_add_action(node, ACCESSKIT_ACTION_FOCUS);
+        accesskit_node_add_action(node, ACCESSKIT_ACTION_CLICK);
+        accesskit_node_add_action(node, ACCESSKIT_ACTION_INCREMENT);
+        accesskit_node_add_action(node, ACCESSKIT_ACTION_DECREMENT);
+        return {node, 400 + index};
+#else
+        return {nullptr, 0};
+#endif
+    }
 };
 
 struct SSTNKnobs : visage::Frame, PixelMixin<SSTNKnobs>
@@ -80,6 +102,7 @@ struct SSTNKnobs : visage::Frame, PixelMixin<SSTNKnobs>
     {
         for (int i = 0; i < nKnobs; ++i)
         {
+            knobs[i].index = i;
             addChild(&knobs[i]);
         }
     }

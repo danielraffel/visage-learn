@@ -16,6 +16,8 @@ int realMain()
     baconpaul::visage_learn::Fonts::setup();
 
     visage::ApplicationWindow app;
+
+    baconpaul::visage_learn::ak_window_state akws;
 #define KNOB_CHILD
 #ifdef CIRCLE_CHILD
     baconpaul::visage_learn::DraggableCircle child;
@@ -30,7 +32,10 @@ int realMain()
 #endif
 
     app.setTitle("BaconPaul learns Visage");
-    app.show(800, 600);
+    app.show({}, {}, 800, 600);
+
+    akws.setFrame(&app);
+    akws.setup(app.window()->nativeHandle());
     app.runEventLoop();
 
     return 0;
