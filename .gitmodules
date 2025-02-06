@@ -1,3 +1,24 @@
 [submodule "libs/Visage"]
 	path = libs/Visage
 	url = https://github.com/VitalAudio/Visage
+[submodule "libs/clap-libs/clap"]
+	path = libs/clap-libs/clap
+	url = https://github.com/free-audio/clap
+[submodule "libs/clap-libs/clap-wrapper"]
+	path = libs/clap-libs/clap-wrapper
+	url = https://github.com/free-audio/clap-wrapper
+[submodule "libs/clap-libs/clap-helpers"]
+	path = libs/clap-libs/clap-helpers
+	url = https://github.com/free-audio/clap-helpers
+[submodule "libs/sst/sst-plugininfra"]
+	path = libs/sst/sst-plugininfra
+	url = https://github.com/surge-synthesizer/sst-plugininfra
+[submodule "libs/fmt"]
+	path = libs/fmt
+	url = https://github.com/fmtlib/fmt.git
+[submodule "libs/sst/sst-basic-blocks"]
+	path = libs/sst/sst-basic-blocks
+	url = https://github.com/surge-synthesizer/sst-basic-blocks
+[submodule "libs/simde"]
+	path = libs/simde
+	url = https://github.com/simd-everywhere/simde

@@ -4,8 +4,8 @@
  * MIT License, 2025, https://github.com/baconpaul/visage-learn
  */
 
-#ifndef BACONPAUL_VISAGE_LEARN_SSTSTYLE_KNOB_H
-#define BACONPAUL_VISAGE_LEARN_SSTSTYLE_KNOB_H
+#ifndef BACONPAUL_VISAGE_LEARN_UI_SSTSTYLE_KNOB_H
+#define BACONPAUL_VISAGE_LEARN_UI_SSTSTYLE_KNOB_H
 
 #include <visage_ui/frame.h>
 #include "config.h"
@@ -18,11 +18,7 @@ struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>, ProvidesAK
 {
     visage::Font detailFont;
     int index{0};
-    SSTStyleKnob()
-    {
-        detailFont = visage::Font(20, Fonts::firaCode, Fonts::firaCodeSize);
-
-    }
+    SSTStyleKnob() { detailFont = visage::Font(20, Fonts::firaCode, Fonts::firaCodeSize); }
     static constexpr float gapAngle{60.0 / 360.0 * M_PI};
     float value{0.2};
     static constexpr int margin{2}, ringThick{8}, bodyStart{margin + ringThick + 4},
@@ -79,7 +75,9 @@ struct SSTStyleKnob : visage::Frame, PixelMixin<SSTStyleKnob>, ProvidesAK
     {
 #if HAS_ACCESSKIT
         accesskit_node *node = accesskit_node_new(ACCESSKIT_ROLE_SLIDER);
-        accesskit_node_set_bounds(node, {(double)bounds().x(), (double)bounds().y(), (double)width(), (double)height()});;
+        accesskit_node_set_bounds(
+            node, {(double)bounds().x(), (double)bounds().y(), (double)width(), (double)height()});
+        ;
         accesskit_node_set_label(node, ("Knob " + std::to_string(index)).c_str());
         accesskit_node_add_action(node, ACCESSKIT_ACTION_FOCUS);
         accesskit_node_add_action(node, ACCESSKIT_ACTION_CLICK);

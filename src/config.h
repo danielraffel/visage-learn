@@ -11,5 +11,5 @@
 #define VLLOG(...) std::cout << __FILE__ << ":" << __LINE__ << " " << __VA_ARGS__ << std::endl;
 #define VLV(x) #x << "=" << x << " "
 
-#include "pixel_math.h"
+#include "ui/pixel_math.h"
 #endif // CONFIG_H

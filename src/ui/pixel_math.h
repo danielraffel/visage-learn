@@ -4,8 +4,8 @@
  * MIT License, 2025, https://github.com/baconpaul/visage-learn
  */
 
-#ifndef BACONPAUL_VISAGE_LEARN_PIXEL_MATH_H
-#define BACONPAUL_VISAGE_LEARN_PIXEL_MATH_H
+#ifndef BACONPAUL_VISAGE_LEARN_UI_PIXEL_MATH_H
+#define BACONPAUL_VISAGE_LEARN_UI_PIXEL_MATH_H
 
 #include <cmath>
 

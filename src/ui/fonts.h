@@ -4,8 +4,8 @@
  * MIT License, 2025, https://github.com/baconpaul/visage-learn
  */
 
-#ifndef BACONPAUL_VISAGE_LEARN_FONTS_H
-#define BACONPAUL_VISAGE_LEARN_FONTS_H
+#ifndef BACONPAUL_VISAGE_LEARN_UI_FONTS_H
+#define BACONPAUL_VISAGE_LEARN_UI_FONTS_H
 
 #include <cstddef>
 
